@@ -1,0 +1,30 @@
+<?php include 'header.php';
+
+if(isset($_POST['deletebtn'])){
+
+include "config.php";
+$stu_id = $_POST['Student_ID'];
+
+$sql = "DELETE FROM student WHERE Student_ID = {$stu_id}";
+$result = mysqli_query($conn, $sql) or die("Query Unsuccessful.");
+
+header("Location: http://localhost/CRUD/crud/crud/index.php");
+mysqli_close($conn);
+
+}
+?>
+<div id="main-content">
+    <h2 style="margin-left: 13%;">Delete Record</h2>
+    <form
+    style="width: 72%;" 
+    class="post-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <div class="form-group">
+            <label>Id</label>
+            <input type="text" name="Student_ID" />
+        </div>
+        <input class="submit" type="submit" name="deletebtn" value="Delete" />
+    </form>
+</div>
+</div>
+</body>
+</html>
